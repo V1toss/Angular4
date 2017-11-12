@@ -1,0 +1,28 @@
+<label>Server Name</label>
+
+<input
+  type="text"
+  class="form-control"
+  [(ngModel)]="serverName">
+<br/>
+<button
+  class="btn btn-primary"
+  [disabled]="!allowNewServer"
+  (click)="onCreateServer()">Add Server
+</button>
+<br/>
+
+<p *ngIf="serverCreated">Server was created, server name is {{ serverName }}</p>
+<br/>
+<app-server *ngFor="let server of servers"></app-server>
+
+<button
+  class="btn btn-primary"
+  (click)="switchShowStatus()">Display Details
+</button>
+
+<p *ngIf="showStatus">Secret content</p>
+
+<div
+  *ngFor="let log of logs; let i = index"
+  [ngStyle]="{backgroundColor: i >= 4 ? 'blue' : 'transparent', color: i >= 4 ? 'white' : 'black' }">{{ log }}</div>
